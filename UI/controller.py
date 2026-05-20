@@ -1,4 +1,5 @@
 import flet as ft
+import networkx as nx
 
 
 class Controller:
@@ -9,12 +10,20 @@ class Controller:
         self._model = model
 
     def fillDDGenre(self):
-        pass
+        for g in self._model.getAllGeneri():
+            self._view._ddGenre.options.append(ft.dropdown.Option(
+                key = g.GenreId, #chiave primaria
+                text = g.Name, #quello che appare nel dropdown,
+                on_click = self._choiceDDGenere
+            ))
+
+    def _choiceDDGenere(self,e):
+        self._choiceGenere = e.control.data
+        print(f"Hai elezionato come genere {self._choiceGenere}")
 
     def handleCreaGrafo(self, e):
-        pass
-
-    def handleCreaGrafo(self,e):
+        m = nx.MultiDiGraph()
+        g.getAllNodes(Genere)
         pass
 
     def handleCammino(self,e):
